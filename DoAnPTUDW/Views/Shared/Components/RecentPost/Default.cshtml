@@ -1,0 +1,20 @@
+﻿@using DoAnPTUDW.Models;
+@using DoAnPTUDW.Utilities;
+@model IList<Post>
+
+    <div class="mb-5">
+        <h2 class="mb-4">Các khóa học gần đây</h2>
+        @foreach(var item in Model)
+        {
+            string url = Functions.TitleSlugGeneration("post", item.Title, item.PostID);
+            <a class="d-flex align-items-center text-decoration-none mb-4" href="/@url">
+                <img class="img-fluid rounded" src="@item.Images" style="width: 80px; height: 80px; object-fit: cover" alt="">
+                <div class="pl-3">
+                    <h6>@item.Title</h6>
+                    <div class="d-flex">
+                        <small class="text-body mr-3"><i class="fa fa-user text-primary mr-2"></i>@item.Author</small>
+                        <small class="text-body"><i class="fa fa-star text-primary mr-2"></i> @item.CreatedDate</small>
+                    </div>
+                </div>
+            </a>
+        }

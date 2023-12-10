@@ -1,0 +1,40 @@
+﻿@using DoAnPTUDW.Models;
+@using DoAnPTUDW.Utilities;
+@model IList<Post>
+
+<!-- Courses Start -->
+<div class="container-fluid px-0 py-5">
+    <div class="row mx-0 justify-content-center pt-5">
+        <div class="col-lg-6">
+            <div class="section-title text-center position-relative mb-4">
+                <h6 class="d-inline-block position-relative text-secondary text-uppercase pb-2">Tuyển sinh</h6>
+                <h1 class="display-4">Thông tin tuyển sinh</h1>
+            </div>
+        </div>
+    </div>
+    <div class="owl-carousel courses-carousel">
+        
+        @foreach(var item in Model)
+        {
+            string url = Functions.TitleSlugGeneration("post", item.Title, item.PostID);
+            <div class="courses-item position-relative">
+                <img class="img-fluid" src="@item.Images" alt="">
+                <div class="courses-text">
+                    <h4 class="text-center text-white px-3">@item.Title</h4>
+                    <div class="border-top w-100 mt-3">
+                        <div class="d-flex justify-content-between p-4">
+                            <span class="text-white"><i class="fa fa-user mr-2"></i>@item.Abstract</span>
+                            @* <span class="text-white"><i class="fa fa-star mr-2"></i>@item.Author </span> *@
+                        </div>
+                    </div>
+                    <div class="w-100 bg-white text-center p-4">
+                        <a class="btn btn-primary" href="/@url">Xem thêm</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+</div>
+<!-- Courses End -->
+<!-- Team End -->
